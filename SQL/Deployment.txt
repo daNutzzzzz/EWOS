@@ -1,7 +1,11 @@
-# https://chat.openai.com/c/f0260e01-60b0-4764-a32f-9ea56f627b7a
+# https://chat.openai.com/c/d142a3d7-b0fe-4fef-82c4-0f1f33f2ac74
 
 To deploy this, you would typically:
 
-Install Flask (pip install flask).
+Install mysql-connector-python (pip install mysql-connector-python).
+
+
+=================
+
 Place the frontend files (index.html, style.css, script.js) in a folder named static within your Flask app directory.
 Run the server.py file, and your website will be accessible at http://localhost:5000.

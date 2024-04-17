@@ -1,26 +1,17 @@
-function parseFile() {
-    const fileInput = document.getElementById('fileInput');
-    const outputDiv = document.getElementById('output');
-    
-    const file = fileInput.files[0];
-    if (!file) {
-        outputDiv.innerText = 'Please select a file.';
-        return;
-    }
-
-    const formData = new FormData();
-    formData.append('file', file);
-
-    fetch('/parse', {
-        method: 'POST',
-        body: formData
-    })
-    .then(response => response.json())
-    .then(data => {
-        outputDiv.innerText = JSON.stringify(data, null, 2);
-    })
-    .catch(error => {
-        outputDiv.innerText = 'Error parsing file.';
-        console.error('Error:', error);
-    });
+function fetchData() {
+    fetch('/parse')
+        .then(response => response.json())
+        .then(data => {
+            const outputDiv = document.getElementById('output');
+            outputDiv.innerHTML = JSON.stringify(data, null, 2);
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
 }
+
+// Fetch data initially
+fetchData();
+
+// Fetch data every 5 seconds
+setInterval(fetchData, 5000);
