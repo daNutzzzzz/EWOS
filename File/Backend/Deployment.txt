@@ -1,0 +1,5 @@
+To deploy this, you would typically:
+
+Install Flask (pip install flask).
+Place the frontend files (index.html, style.css, script.js) in a folder named static within your Flask app directory.
+Run the server.py file, and your website will be accessible at http://localhost:5000.
