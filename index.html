@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SQL Database Query</title>
+    <style>
+        .container {
+            display: flex;
+        }
+        .selection-column {
+            width: 200px;
+            padding-right: 20px;
+        }
+        .view-window {
+            flex-grow: 1;
+        }
+    </style>
+</head>
+<body>
+    <h1>SQL Database Query</h1>
+    <div class="container">
+        <div class="selection-column">
+            <h2>Predefined Queries</h2>
+            <ul>
+                <li><a href="#" onclick="runQuery('SELECT * FROM table1')">Query 1</a></li>
+                <li><a href="#" onclick="runQuery('SELECT * FROM table2')">Query 2</a></li>
+                <!-- Add more predefined queries here -->
+            </ul>
+        </div>
+        <div class="view-window">
+            <h2>Query Result</h2>
+            <div id="queryResult"></div>
+        </div>
+    </div>
+
+    <script>
+        function runQuery(query) {
+            var xhr = new XMLHttpRequest();
+            xhr.open("POST", "/query", true);
+            xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState == 4 && xhr.status == 200) {
+                    document.getElementById("queryResult").innerHTML = xhr.responseText;
+                }
+            };
+            xhr.send("query=" + encodeURIComponent(query));
+        }
+    </script>
+</body>
+</html>
